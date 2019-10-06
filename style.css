@@ -17,4 +17,5 @@ body{
 .letter{
     width: 30px;
     margin-bottom: 5px;
+    text-align: center;
 }
