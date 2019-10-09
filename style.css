@@ -19,3 +19,11 @@ body{
     margin-bottom: 5px;
     text-align: center;
 }
+.container-letter{
+    position: relative;
+}
+.full-answer-container{
+    top: 0;
+    position: absolute;
+    float: left;
+}
