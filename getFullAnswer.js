@@ -3,7 +3,14 @@ const addFullAnswer = document.querySelector('.add-full');
 
 function getFullAnswer(answer, answerField, answerContainer, input){
     addFullAnswer.addEventListener('click', guess);
-    
+
+    fullAnswer.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            addFullAnswer.click();
+        }
+    });
+
     function guess() {
         if (fullAnswer.value.trim()){
             guess.continue;
@@ -20,7 +27,7 @@ function getFullAnswer(answer, answerField, answerContainer, input){
                 break;
             }
         }
-        flag ? draw('0 ходов') : draw('усе вiграл');
+        flag ? draw('усе проiграл') : draw('усе вiграл');
     }
 
     function draw(result) {
