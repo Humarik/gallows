@@ -3,7 +3,6 @@ const addFullAnswer = document.querySelector('.add-full');
 
 function getFullAnswer(answer, answerField, answerContainer, input){
     addFullAnswer.addEventListener('click', guess);
-<<<<<<< HEAD
 
     fullAnswer.addEventListener("keyup", function (event) {
         if (event.keyCode === 13) {
@@ -12,9 +11,6 @@ function getFullAnswer(answer, answerField, answerContainer, input){
         }
     });
 
-=======
-    
->>>>>>> 0bff2beaee72c155c42f61cc43fe91c5459e12af
     function guess() {
         if (fullAnswer.value.trim()){
             guess.continue;
@@ -31,11 +27,7 @@ function getFullAnswer(answer, answerField, answerContainer, input){
                 break;
             }
         }
-<<<<<<< HEAD
         flag ? draw('усе проiграл') : draw('усе вiграл');
-=======
-        flag ? draw('0 ходов') : draw('усе вiграл');
->>>>>>> 0bff2beaee72c155c42f61cc43fe91c5459e12af
     }
 
     function draw(result) {
