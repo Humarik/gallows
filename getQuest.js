@@ -8,6 +8,7 @@
 
     const item = getRandomItem();
     const answer = item.a.toLowerCase().split('');
+    getFullAnswer(answer, answerField, answerContainer, input);
     const userAnswer = createArr(answer.length);
 
     let count = 0;
@@ -32,8 +33,8 @@
             }
         });
         if (answer.length == count) {
-            answerField .innerHTML = 'усе вiграл';
-            answerContainer.appendChild(answerField );
+            answerField.innerHTML = 'усе вiграл';
+            answerContainer.appendChild(answerField);
             input.style.display = 'none'
         }
     }
