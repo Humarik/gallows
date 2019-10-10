@@ -1,17 +1,13 @@
-(function () {
-    const questContainer = document.querySelector('.quest-container');
-    const questField = document.querySelector('.quest');
+function getAnswer(string) {
     const answerField = document.querySelector('.answer');
     const answerContainer = document.querySelector('.container-word');
     const input = document.querySelector('.letter');
     const button = document.querySelector('.button');
-
-    const item = getRandomItem();
-    const answer = item.a.toLowerCase().split('');
-    getFullAnswer(answer, answerField, answerContainer, input);
+    const answer = string.toLowerCase().split('');
     const userAnswer = createArr(answer.length);
 
     let count = 0;
+    getFullAnswer(answer, draw);
 
     button.addEventListener('click', getLetter);
 
@@ -28,14 +24,12 @@
         answer.forEach((elem,index) => {
             if (text == elem){
                 userAnswer.splice(index, 1, elem.toUpperCase());
-                draw();
+                drawLeter();
                 count++;
             }
         });
         if (answer.length == count) {
-            answerField.innerHTML = 'усе вiграл';
-            answerContainer.appendChild(answerField);
-            input.style.display = 'none'
+            draw('усе вiграл');
         }
     }
 
@@ -47,11 +41,15 @@
         return array;
     }
 
-    function draw (){
-        questField.innerHTML = item.q;
+    function drawLeter (){
         answerField .innerHTML = userAnswer.join(' ');
-        questContainer.appendChild(questField);
         answerContainer.appendChild(answerField);
     }
-    draw();
-}())
+    drawLeter();
+    
+    function draw(result) {
+        answerField.innerHTML = result;
+        answerContainer.appendChild(answerField);
+        input.style.display = 'none';
+    }
+}

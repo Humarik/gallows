@@ -1,9 +1,7 @@
-const fullAnswer = document.querySelector('.full-answer');
-const addFullAnswer = document.querySelector('.add-full');
-
-function getFullAnswer(answer, answerField, answerContainer, input){
+function getFullAnswer(answer, draw){
+    const fullAnswer = document.querySelector('.full-answer');
+    const addFullAnswer = document.querySelector('.add-full');
     addFullAnswer.addEventListener('click', guess);
-
     fullAnswer.addEventListener("keyup", function (event) {
         if (event.keyCode === 13) {
             event.preventDefault();
@@ -15,8 +13,10 @@ function getFullAnswer(answer, answerField, answerContainer, input){
         if (fullAnswer.value.trim()){
             guess.continue;
         }else{
-            return alert('word!');
+            alert('you need to enter word!');
+            return false;
         }
+        
         const userAnswer = fullAnswer.value.trim().toLowerCase().split('');
         fullAnswer.value = '';
         let flag = false;
@@ -28,12 +28,6 @@ function getFullAnswer(answer, answerField, answerContainer, input){
             }
         }
         flag ? draw('усе проiграл') : draw('усе вiграл');
-    }
-
-    function draw(result) {
-        answerField.innerHTML = result;
-        answerContainer.appendChild(answerField);
-        input.style.display = 'none';
         fullAnswer.style.display = 'none';
     }
 }
