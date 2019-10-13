@@ -11,6 +11,18 @@ const initQuest = (function (){
             q: 'Единица измерения силы тока это ?',
             a: 'Ампер'
         },
+        {
+            q: 'Так в старину называли сторожа городских ворот',
+            a: 'Вратарь'
+        },
+        {
+            q: 'Какое животное дало название распространенному в Древнем Риме способу боевого построения?',
+            a: 'Черепаха'
+        },
+        {
+            q: 'Какое животное дало название распространенному в Древнем Риме способу боевого построения?',
+            a: 'Черепаха'
+        },
     ]
 
     function getRandomItem() {
@@ -18,6 +30,7 @@ const initQuest = (function (){
         const number = Math.round(Math.random() * size);
         return questions[number];
     }
+    
     const item = getRandomItem();
     getAnswer(item.a);
     questField.innerHTML = item.q;
