@@ -15,19 +15,10 @@ function getFullAnswer(answer, draw){
         }else{
             alert('you need to enter word!');
             return false;
-        }
-        
+        }  
         const userAnswer = fullAnswer.value.trim().toLowerCase().split('');
         fullAnswer.value = '';
-        let flag = false;
-        for(let i = 0; i < answer.length; i++){
-            let x = userAnswer[i];
-            if(answer[i] != x ){
-                flag = true;
-                break;
-            }
-        }
-        flag ? draw('усе проiграл') : draw('усе вiграл');
+        answer.every((letter, index) => { return letter === userAnswer[index] }) ? draw('усе вiграл') : draw('усе проiграл');
         fullAnswer.style.display = 'none';
     }
 }
