@@ -6,7 +6,7 @@ function getAnswer(string) {
     const answer = string.toLowerCase().split('');
     const arrUserAnswer = createArrUserAnswer(answer.length);
 
-    getFullAnswer(answer, drawEnd);
+    getFullAnswer(answer.slice(0), drawEnd);
 
     button.addEventListener('click', getLetter);
 
@@ -30,6 +30,7 @@ function getAnswer(string) {
     function getLetter () {
         const letterOfUser = input.value.toLowerCase();
         input.value = '';
+        if (letterOfUser == ' ' || !letterOfUser) return false;
         answer.some(letter => letter === letterOfUser) ? checkLetter(letterOfUser) : counter();
         answer.every(item => item === '') ? drawEnd('усе вiграл') : false;
     }
