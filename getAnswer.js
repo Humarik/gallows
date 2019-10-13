@@ -4,36 +4,37 @@ function getAnswer(string) {
     const input = document.querySelector('.letter');
     const button = document.querySelector('.button');
     const answer = string.toLowerCase().split('');
-    const userAnswer = createArr(answer.length);
+    const arrUserAnswer = createArrUserAnswer(answer.length);
 
-    let count = 0;
-    getFullAnswer(answer, draw);
+    getFullAnswer(answer, drawEnd);
 
     button.addEventListener('click', getLetter);
 
-    input.addEventListener("keyup", function(event){
+    input.addEventListener("keyup", function (event) {
         if (event.keyCode === 13) {
             event.preventDefault();
             button.click();
         }
     });
 
-    function getLetter(){
-        const text = input.value.toLowerCase();
-        input.value = '';
-        answer.forEach((elem,index) => {
-            if (text == elem){
-                userAnswer.splice(index, 1, elem.toUpperCase());
-                drawLeter();
-                count++;
+    function checkLetter (letterOfUser) {
+        answer.forEach((letterOfAnswer, index) => {
+            if (letterOfUser === letterOfAnswer) {
+                arrUserAnswer.splice(index, 1, letterOfAnswer.toUpperCase());
+                answer.splice(index, 1, '');
+                drawLetter();
             }
-        });
-        if (answer.length == count) {
-            draw('усе вiграл');
-        }
+        })
     }
 
-    function createArr(number){
+    function getLetter () {
+        const letterOfUser = input.value.toLowerCase();
+        input.value = '';
+        answer.some(letter => letter === letterOfUser) ? checkLetter(letterOfUser) : counter();
+        answer.every(item => item === '') ? drawEnd('усе вiграл') : false;
+    }
+
+    function createArrUserAnswer (number) {
         const array = [];
         for(let i = number-1; i >= 0; i--){
             array.push('-');
@@ -41,13 +42,13 @@ function getAnswer(string) {
         return array;
     }
 
-    function drawLeter (){
-        answerField .innerHTML = userAnswer.join(' ');
+    function drawLetter () {
+        answerField.innerHTML = arrUserAnswer.join(' ');
         answerContainer.appendChild(answerField);
     }
-    drawLeter();
+    drawLetter ();
     
-    function draw(result) {
+    function drawEnd (result) {
         answerField.innerHTML = result;
         answerContainer.appendChild(answerField);
         input.style.display = 'none';

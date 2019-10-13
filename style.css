@@ -37,6 +37,17 @@ body{
     border: 1px solid grey;
 }
 
+.wrapper-wrong{
+    margin: 0;
+    position: absolute;
+    max-width: 50px;
+    right: 0px;
+    top: 0;
+}
+
+.wrong-number{margin: 0;}
+.wrapper-wrong > p {margin: 0;}
+
 .button{
     width: 44px;
     height: 25px;
